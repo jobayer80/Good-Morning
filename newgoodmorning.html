@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Morning, My Love</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(180deg, #0a1d37 0%, #26498e 40%, #ff6f61 100%);
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      transition: background 5s ease-in-out;
+    }
+
+    .sunrise-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    /* Professional Sun with glowing effect */
+    .sun {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255, 255, 0, 0.9) 25%, rgba(255, 165, 0, 0.6) 50%, rgba(255, 87, 34, 0.4) 70%);
+      border-radius: 50%;
+      box-shadow: 0 0 50px 15px rgba(255, 165, 0, 0.7);
+      bottom: -200px;
+      animation: sunrise 7s ease-in-out forwards;
+    }
+
+    @keyframes sunrise {
+      0% {
+        bottom: -200px;
+        opacity: 0;
+      }
+      50% {
+        bottom: 30%;
+        opacity: 1;
+      }
+      100% {
+        bottom: 15%;
+        opacity: 1;
+      }
+    }
+
+    /* Sun Glare Animation */
+    .sun-glare {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 25%, rgba(255, 255, 255, 0) 60%);
+      border-radius: 50%;
+      bottom: -150px;
+      animation: glare 7s ease-in-out forwards;
+    }
+
+    @keyframes glare {
+      0% {
+        bottom: -150px;
+        opacity: 0;
+      }
+      50% {
+        bottom: 20%;
+        opacity: 0.6;
+      }
+      100% {
+        bottom: 10%;
+        opacity: 0.6;
+      }
+    }
+
+    .message {
+      font-size: 2rem;
+      opacity: 0;
+      color: #f6b6b2;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .message.visible {
+      opacity: 1;
+    }
+
+    .message p {
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+    .love-rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: none;
+    }
+
+    .rain-drop {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: #ff6f61;
+      border-radius: 50%;
+      opacity: 0;
+      animation: rain 3s infinite;
+    }
+
+    @keyframes rain {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="sunrise-container">
+  <!-- Sun and Glare (Halo) -->
+  <div class="sun-glare"></div>
+  <div class="sun"></div>
+  
+  <!-- Good Morning Message -->
+  <div class="message" id="goodMorningMessage">
+    <p>Good Morning, My Love 💖</p>
+    <p>You are the first thought in my heart each day.</p>
+    <p>Your smile is the light that brightens my world.</p>
+    <p>Every moment with you feels like a beautiful sunrise.</p>
+    <p>Thank you for filling my life with love.</p>
+  </div>
+
+  <!-- Love Rain -->
+  <div class="love-rain" id="rain"></div>
+</div>
+
+<script>
+  // Wait for the sunrise animation to finish
+  document.querySelector('.sun').addEventListener('animationend', function() {
+    // Show the "Good Morning" message with romantic lines
+    const message = document.getElementById('goodMorningMessage');
+    message.classList.add('visible');
+
+    // After a delay, start the "Love Rain" animation
+    setTimeout(() => {
+      const rain = document.getElementById('rain');
+      rain.style.display = 'block';
+
+      // Create raindrops (hearts)
+      for (let i = 0; i < 200; i++) {
+        const rainDrop = document.createElement('div');
+        rainDrop.classList.add('rain-drop');
+        rainDrop.style.left = `${Math.random() * 100}vw`;
+        rainDrop.style.animationDelay = `${Math.random() * 2}s`;
+        rainDrop.style.animationDuration = `${Math.random() * 2 + 2}s`;
+
+        rain.appendChild(rainDrop);
+      }
+    }, 5000); // Delay the start of the rain effect for a more natural flow
+  });
+</script>
+
+</body>
+</html>

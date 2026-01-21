@@ -1,0 +1,80 @@
+/* styles.css */
+
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #ffb6c1; /* Soft pink background */
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Container for the content */
+.content {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    font-size: 4rem;
+    margin: 20px 0;
+    font-weight: bold;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.message {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: 300;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.signature {
+    font-size: 1.2rem;
+    margin-top: 30px;
+    font-style: italic;
+}
+
+/* Love Rain Effect Container */
+#rain-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none; /* Make sure the rain doesn't block interactions */
+}
+
+/* Animation for Rain */
+@keyframes drop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(100vh);
+    }
+}
+
+/* Love Heart Rain */
+.love-drop {
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    color: red;
+    animation: drop 2s linear infinite;
+    opacity: 0;
+}
+
+/* Heart Shape */
+.love-drop:before {
+    content: "❤️";
+}
